@@ -1,0 +1,60 @@
+package jadelex ;
+
+import jade.Direction;
+%%
+
+%class TokenizerV1
+%implements Tokenizer
+%public
+%unicode
+%line
+%column
+
+PEN_MODE_UP=lever
+PEN_MODE_DOWN=baisser
+NORD="nord"
+SUD="sud"
+EST="est"
+OUEST="ouest"
+STEP_LENGTH="pas"\s[0-9]+
+JUMP="aller"\s[0-9]+\s[0-9]+
+REPEAT=[0-9]+\s"fois"
+SINGLE_COMMENTARY=\/\/.*
+MULTIPLE_COMMENTARY=\/\*[^]*\*\/
+UNKNOWN=([:letter:]|[0-9])+
+
+%%
+
+{NORD}
+	{return new Move(Direction.NORTH);}
+{SUD}
+	{return new Move(Direction.SOUTH);}
+{EST}
+	{return new Move(Direction.EAST);}
+{OUEST}
+	{return new Move(Direction.WEST);}	
+{JUMP}
+	{String[] parts = yytext().split(" ");
+	return new Jump(Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));}
+{REPEAT}
+	{return new Repeat(Integer.parseInt(yytext().split(" ")[0]));}
+{SINGLE_COMMENTARY}
+		{}
+
+{MULTIPLE_COMMENTARY}
+		{}
+
+{PEN_MODE_UP}
+      {return new PenMode(false);}
+
+{PEN_MODE_DOWN}
+      {return new PenMode(true);}
+
+{STEP_LENGTH}
+	  {return new StepLength(Integer.parseInt(yytext().split(" ")[1]));}
+
+{UNKNOWN}
+		{return new Unknown(yytext());}
+
+[^]
+		{}

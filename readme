@@ -1,0 +1,20 @@
+TP5 d'AEL effectué par Eddy El Khatib
+
+Vous trouverez dans cette archive :
+
+- draw-util.jar : contient les classes utiles données dans l'archive de début de TP (paquets drawing et jade)
+		  qui m'ont servies lors du déroulement de mon travail sous eclipse
+
+- DrawMachine.jar : qui est mon jar executable pour le lancement de ma DrawingMachine
+		    il prend un chemin menant vers un fichier texte pour le traduire en
+		    tokens et affiche le résultat sur une fenêtre de dessin (c'est la seule façon
+		    que j'ai trouver pour faire reconnaitre les classes de draw-util.jar à ma machine
+		    -> en créant le jar depuis Eclipse)
+
+- test.sh : il suffit de lancer ce fichier shell pour pouvoir afficher le résultat des deux 
+	    interpreteurs (affichage token et résultat graphique) sur le fichier testJade.txt
+
+- dossier src: mon dossier comportant tous mes fichiers sources.
+
+
+Bonne correction :]
